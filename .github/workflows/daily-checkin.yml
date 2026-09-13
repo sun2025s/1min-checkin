@@ -3,7 +3,7 @@ name: 1min.ai Daily Auto Checkin
 on:
   schedule:
     # Run daily at UTC 8:00 (Taipei time 16:00)
-    - cron: '5 8 * * *'
+    - cron: '30 8 * * *'
   workflow_dispatch: # Allow manual trigger
 
 jobs:
@@ -34,6 +34,7 @@ jobs:
 
     - name: Run auto checkin
       env:
+        ACCOUNTS_JSON: ${{ secrets.ACCOUNTS_JSON }}
         EMAIL: ${{ secrets.EMAIL }}
         PASSWORD: ${{ secrets.PASSWORD }}
         TOTP_SECRET: ${{ secrets.TOTP_SECRET }}
